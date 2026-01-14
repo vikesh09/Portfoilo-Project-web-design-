@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/whitemuffens/Library/Mobile Documents/com~apple~CloudDocs/Practice/Github/Portfoilo-Project-web-design-",
+      "program": "/Users/whitemuffens/Library/Mobile Documents/com~apple~CloudDocs/Practice/Github/Portfoilo-Project-web-design-/build/Debug/outDebug"
+    }
+  ]
+}
