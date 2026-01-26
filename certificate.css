@@ -114,8 +114,14 @@
   margin-right: 5%;
 }
 .box1{
-  height: 1000px;
+  height: auto;
   margin-top: 8%;
+  display: flex;
+  justify-content: space-evenly;
+  
+}
+.min-box1{
+  justify-items: center;
 }
 .foot {
   background-color: rgb(238, 234, 234);
