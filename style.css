@@ -1,303 +1,194 @@
-
-.main-container {
-  background-image: url("bg3.jpg");
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-  width: 100%;
-  
+/* --- Global Resets & Smooth Scroll --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #0a192f, #020617);
+  color: white;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* --- Navigation (Glassmorphism Effect) --- */
 .nav {
   display: flex;
-  justify-content: space-between;   
+  justify-content: space-between;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.9);
-  padding: 15px 50px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 18px;
-  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px); /* Modern blur effect */
+  padding: 10px 5%;
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
-  z-index: 100;
-  box-shadow: 0 0 15px #00ffff;
-  
+  z-index: 1000;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
 }
+
 .logo {
-  height: 80px;
+  height: 50px;
   border-radius: 10%;
-  cursor: pointer;
+  transition: 0.3s;
 }
+
+.logo:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px #00ffff);
+}
+
 .nav-links {
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 25px;
-  flex: 1;
-  font-size: 20px;
+  align-items: center;
 }
 
 .nav-links a {
   color: #00ffff;
   text-decoration: none;
-  letter-spacing: 1px;
+  font-weight: 600;
+  font-size: 16px;
   position: relative;
-  transition: color 0.3s ease;
+  transition: 0.3s;
 }
+
 .nav-links a::after {
   content: "";
   position: absolute;
-  bottom: -4px;
+  bottom: -5px;
   left: 0;
   width: 0%;
   height: 2px;
-  background-color: #00ffff;
+  background: #00ffff;
   box-shadow: 0 0 10px #00ffff;
-  transition: width 0.3s ease-in-out;
+  transition: 0.3s;
 }
 
-.nav-links a:hover::after {
-  width: 100%;
-}
+.nav-links a:hover::after { width: 100%; }
+.nav-links a:hover { color: white; }
 
-.nav-links a:hover {
-  color: white;
-}
-
+/* --- Buttons --- */
 .btn {
   background: linear-gradient(90deg, #9a3de2, #00ffff);
   border-radius: 20px;
-  font-size: 16px;
   padding: 8px 20px;
-  color: white;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  
+  transition: 0.3s ease;
+  box-shadow: 0 0 10px rgba(154, 61, 226, 0.5);
 }
 
-.btn:hover {
-  background: linear-gradient(90deg, #00ffff, #8a2be2);
-  transform: scale(1.05);
-  box-shadow: 0 0 15px #00ffff;
-}
-.btn a{
-  color:White;
+.btn a {
+  color: white;
   text-decoration: none;
-  letter-spacing: 1px;
-  position: relative;
-  transition: color 0.3s ease;
-  
-}
-@media (max-width: 768px) {
-  .nav {
-    flex-direction: column;
-    align-items: center;
-    padding: 15px 20px;
-  }
-  .nav-links {
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-  .btn {
-    margin-top: 10px;
-    
-  }
-}
-.btn {
-  background-color: rgb(165, 28, 220);
-  border-radius: 20px;
-  font-size: 18px;
-  padding: 8px 16px;
-  color: white;
-  border: none;
-  cursor: pointer;
-  margin-left: 40px;
-  transition: background-color 0.3s ease;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
 }
 
 .btn:hover {
-  background-color: rgb(145, 10, 200);
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px #00ffff;
 }
-.logo {
-  height: 60px;
-  border-radius: 10%;
-  margin-right: 5%;
+
+/* --- Hero & Content Section --- */
+.main-container {
+  background-image: linear-gradient(rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 0.7)), url("bg3.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Parallax effect */
+  min-height: 100vh;
 }
 
 .content {
   text-align: center;
-  color: white;
-  padding-top: 120px; 
-}
-
-.intro {
-  font-family: 'Orbitron', sans-serif;
-  display: inline-block;
-  color: #00ffff;
-  letter-spacing: 1.5px;
-  text-shadow: 0 0 15px #00ffff;
-  font-size: large;
-  font-weight: 300;
-}
-.aboutme {
-  margin: 60px auto;
-  border-left: 3px solid #00ffff;
-  padding-left: 35px;
-  animation: glowLine 3s infinite alternate;
-  color: #00ffff;
-  max-width: 900px;
-}
-
-#main {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 20px 25px;
-  border-radius: 10px;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
-}
-
-#main:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+  padding: 180px 20px 60px;
 }
 
 #h1 {
-  text-align: center;
-  font-weight: 400;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 4rem;
   color: #00ffff;
+  text-shadow: 0 0 20px #00ffff;
+  letter-spacing: 5px;
 }
 
+/* --- Timeline & Cards --- */
+section {
+  padding: 80px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.timeline, .aboutme {
+  border-left: 3px solid #00ffff;
+  padding-left: 30px;
+  position: relative;
+}
+
+.timeline-item, #main {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 40px;
+  transition: 0.3s;
+}
+
+.timeline-item:hover, #main:hover {
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateX(10px);
+  border-color: #00ffff;
+}
+
+/* --- Footer --- */
 .foot {
-  background-color: #000; /* White hatakar dark kiya cyberpunk look ke liye */
-  color: white;
+  background: #010409;
+  padding: 40px 20px;
   text-align: center;
-  padding: 30px 20px;
-  margin-top: 50px;
   border-top: 1px solid #00ffff;
 }
 
 .foot .social-icons a {
   color: #00ffff;
+  font-size: 28px;
   margin: 0 15px;
-  font-size: 25px;
   transition: 0.3s;
 }
 
 .foot .social-icons a:hover {
-  text-decoration: underline;
-  color: #c42b0c;
-}
-
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle at top, #0a192f, #020617);
-  margin: 0;
-  padding: 0;
   color: white;
-  overflow-x: hidden;
+  filter: drop-shadow(0 0 10px #00ffff);
 }
 
-
-section {
-  padding: 70px 20px;
-  max-width: 900px;
-  margin: auto;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 50px;
-  color: #00ffff;
-  font-size: 2.3rem;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  text-shadow: 0 0 10px #00ffff;
-}
-
-
-.timeline {
-  position: relative;
-  margin-left: 30px;
-  border-left: 3px solid #00ffff;
-  padding-left: 35px;
-  animation: glowLine 3s infinite alternate;
-}
-
-@keyframes glowLine {
-  from { box-shadow: 0 0 8px #00ffff; }
-  to { box-shadow: 0 0 20px #00ffff; }
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 50px;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 20px 25px;
-  border-radius: 10px;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
-}
-
-.timeline-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
-}
-
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -46px;
-  top: 22px;
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(45deg, #00ffff, #38bdf8);
-  border-radius: 50%;
-  box-shadow: 0 0 15px #00ffff;
-  transition: 0.3s;
-}
-
-.timeline-item:hover::before {
-  box-shadow: 0 0 25px #00ffff;
-}
-.timeline-item .year {
-  font-weight: 700;
-  color: #38bdf8;
-  font-size: 1.1rem;
-  display: block;
-  margin-bottom: 6px;
-}
-
-.timeline-item h3 {
-  margin: 5px 0;
-  color: #00ffff;
-  font-size: 1.4rem;
-  text-shadow: 0 0 10px #00ffff;
-}
-
-.timeline-item p {
-  margin-top: 8px;
-  line-height: 1.6;
-  color: #cbd5e1;
-}
-@media (max-width: 600px) {
+/* --- Responsive Design (Mobile Fixes) --- */
+@media (max-width: 768px) {
   .nav {
     flex-wrap: wrap;
-    font-size: 16px;
+    justify-content: center;
+    padding: 15px;
   }
-  section {
-    padding: 40px 15px;
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 15px;
+    font-size: 14px;
   }
-  .timeline, .aboutme {
-    margin-left: 20px;
-    padding-left: 20px;
-  }
-  .timeline-item, #main {
-    font-size: 0.95rem;
+
+  #h1 { font-size: 2.5rem; }
+  
+  .timeline-item::before {
+    left: -41px;
+    width: 16px;
+    height: 16px;
   }
 }

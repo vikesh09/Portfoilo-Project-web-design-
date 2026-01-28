@@ -141,7 +141,7 @@ This project involves developing solutions for various Kaggle competitions, focu
                 <p>Phone No: +91 9000111100</p>
             </div>
             <p>Copyright © 2025 Vikesh. All rights reserved.</p>
-            <p>Last Updated : 27 Jan 2026</p>
+            <p>Last Updated : <span id="last-updated-date">Loading...</span></p>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://x.com/Vikesh099?t=bijIcISPW_RZgl4d_G03CQ&s=09"><i class="fab fa-twitter"></i></a>
@@ -151,4 +151,20 @@ This project involves developing solutions for various Kaggle competitions, focu
         </footer>
     </div>
 </body>
+<script>
+    function updateDate() {
+        
+        let lastMod = new Date(document.lastModified);
+        
+        
+        let options = { day: '2-digit', month: 'short', year: 'numeric' };
+        let formattedDate = lastMod.toLocaleDateString('en-GB', options);
+        
+        
+        document.getElementById('last-updated-date').innerText = formattedDate;
+    }
+
+    
+    window.onload = updateDate;
+</script>
 </html>
