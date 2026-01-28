@@ -172,31 +172,25 @@
   color: #00ffff;
 }
 
-
 .foot {
-  background-color: black;
+  background-color: #000; /* White hatakar dark kiya cyberpunk look ke liye */
   color: white;
   text-align: center;
-  padding: 15px;
-  width: 100%;
+  padding: 30px 20px;
   margin-top: 50px;
-}
-
-.foot .social-icons {
-  margin-top: 10px;
+  border-top: 1px solid #00ffff;
 }
 
 .foot .social-icons a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-  font-size: 30px;
+  color: #00ffff;
+  margin: 0 15px;
+  font-size: 25px;
   transition: 0.3s;
 }
 
 .foot .social-icons a:hover {
   text-decoration: underline;
-  color: #00ffff;
+  color: #c42b0c;
 }
 
 
