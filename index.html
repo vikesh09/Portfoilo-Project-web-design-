@@ -1,170 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">       
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
-    <link rel="icon" type="image/png" href="pfp.jpeg">
-    <link rel ="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"  > 
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vikesh | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/jpeg" href="pfp.jpeg">
 </head>
 <body>
-    <div class="main-container">
-        <div class="container">
-            <div class="header">
-                <nav class="nav">
-                        <img src="pfp2.png" alt="Logo" class="logo" >
-                        <div class="nav-links">
-                            <a href="index.html">Home</a>
-                            <a href="index.html">About</a>
-                            <a href="index.html">Projects</a>
-                            <a href="index.html">Contact</a>
-                            <a href="certificate.html">Certificate</a>
-                            <button class="btn">
-                                <a href="https://www.linkedin.com/in/vikesh-786432317">Let's Connect</a>
 
-                            </button>
-                        </div>
-                        <img src="dtu-logo.png" alt="Logo" class="logo" >
-                </nav>
-            </div>
-            <div class="content">
-                <div class="content-box">
-                    <div class="intro">
-                        <h1 id="h1">VIKESH</h1>
-                        <br><br>
-                        <h3>B.Tech In Computer Science</h3>
-                        <h3>Delhi Technological University(DTU)</h3>
-                        <h3>New Delhi</h3>
-                    
+  <!-- PARTICLE BACKGROUND -->
+  <canvas id="particles"></canvas>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br><br>
-        <h2 id="about">About Me</h2>
-        <div class="aboutme">
-            <section class="main-body">
-                <p id="about">Hi I'm</p>
-                <h1>Vikesh</h1>
-                
-                <h3 id="main">I’m a Computer Science student at Delhi Technological University (DTU) with a strong interest in programming, quantitative research, and AI. I enjoy solving analytical problems and building efficient systems. My goal is to merge coding, mathematics, and data-driven thinking to create innovative solutions in technology and quantitative finance.</section>
-        </div>
-        <div class="Education">
-            <section class="Academic">
-                <h2 id="about">Educational Journey</h2>
-                <div class="timeline">
+  <div class="wrapper">
 
-                    <div class="timeline-item">
-                    <span class="year">2022</span>
-                    <h3>Class 10th — RPVV Gandhi Nagar, Delhi</h3>
-                    <p>Secured 91%, developed strong interest in mathematics and computers.</p>
-                    </div>
+    <!-- NAVBAR -->
+    <nav>
+      <a href="index.html" class="nav-logo">VKS</a>
+      <div class="nav-links">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="certificate.html">Certificates</a>
+        <a href="https://www.linkedin.com/in/vikesh-786432317" class="nav-btn" target="_blank">Let's Connect ↗</a>
+      </div>
+    </nav>
 
-                    <div class="timeline-item">
-                    <span class="year">2024</span>
-                    <h3>Class 12th — RPVV Gandhi Nagar, Delhi</h3>
-                    <p>Completed PCM with cleared Jee mains 2024 with rank 60k.</p>
-                    </div>
+    <!-- HERO -->
+    <div class="hero" id="hero">
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-br"></div>
 
-                    <div class="timeline-item">
-                    <span class="year">2025-present</span>
-                    <h3>B.Tech CSE — Delhi Technological University (DTU)</h3>
-                    <p>Currently pursuing Computer Science, focusing on Machine Learning and Quantitative Research.</p>
-                </div>
-            </section>
-        </div>
-        <div class="Projects">
-            <section class="projects">
-                <h2 id="about">Projects</h2>
-                <div class="timeline">
+      <h1 class="hero-name"><span data-text="VIKESH">VIKESH</span></h1>
+      <p class="hero-sub">B.Tech in Computer Science</p>
+      <p class="hero-uni">Delhi Technological University · New Delhi</p>
 
-                    <div class="timeline-item">
-                    
-                    <h3>💡Student-Academic-Portal</h3>
-                    <p>Description:
-The Student Academic Portal is a centralized web application designed to simplify campus life. It allows students to access essential academic resources, check attendance records, and view class timetables in one place. Built with a focus on usability and efficiency, the portal is currently in its development phase, with plans for full deployment soon.</p>
-                    <br><br>
-                    GitHub Repository:    <a href="https://github.com/vikesh09/Student-Academic-Portal" style="color: red;">Student-Academic-Portal</a>
-                    </div>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary"><span>View Projects</span></a>
+        <a href="https://www.linkedin.com/in/vikesh-786432317" class="btn-ghost" target="_blank">LinkedIn →</a>
+      </div>
 
-                    <div class="timeline-item">
-                    
-                    <h3>👉🏻Python-encoding-imputation </h3>
-                    <p>Description:
-                        Three python scripts to do ordinal encoding,one hot encoding and imputation techniques using basic python functions and Numpy and Pandas library but no pre-defined functions.</p>
-                    <br><br>
-                    GitHub Repository:  <a href="https://github.com/vikesh09/Python-encoding-imputation" style="color: red;">Python-encoding-imputation</a>
-                    </div>
-
-                    <div class="timeline-item">
-                    <h3>👉🏻Personal Portfolio Website</h3>
-                    <p>
-                        Description:
-This Portfolio Website showcases my journey as a Computer Science student at DTU. It highlights my skills, academic background, and technical projects in a clean, modern interface. Designed with responsive layouts and interactive animations, the site reflects my interest in technology, AI, and quantitative research.
-                    </p>
-                    <br><br>
-                    GitHub Repository:  <a href="https://github.com/vikesh09/Portfolio" style="color: red;">Personal Portfolio Website</a>
-                    </div>
-                    <div class="timeline-item">
-                        <h3>🌐Stock Price Prediction</h3>
-                        <p>Description:
-The Stock Price Prediction project uses machine learning models to forecast stock market trends based on historical data. It combines data preprocessing, visualization, and predictive modeling to analyze price patterns. This project reflects my interest in quantitative finance and AI, showcasing how data-driven insights can support smarter investment decisions.</p>
-                    GitHub Repository:  <a href="#" style="color: red;">Stock Price Prediction</a>
-                    </div>
-                    <div class="timeline-item">
-                        <h3>kaggle-competition-solution-Aims-</h3>
-                        <p>
-                            Description:
-This project involves developing solutions for various Kaggle competitions, focusing on data analysis, feature engineering, and machine learning model implementation. It demonstrates my ability to tackle real-world data challenges and improve predictive accuracy through innovative approaches.
-
-                        </p>
-                        GitHub Repository:  <a href="https://github.com/vikesh09/kaggle-competition-solution-Aims-" style="color: red;">kaggle-competition-solution-Aims-</a>
-                    </div>
-                        
-
-                </div>
-            </section>
-        </div>
-        <footer class="foot">
-            <div class="contact">
-                <h3>Contact</h3>
-                <p>📍Address: AB Block, Cse Department, DTU,North West Delhi</p>
-                
-                <p> Email: Vikesh2506056@gmail.com</p>
-                <p>Phone No: +91 9XXXXXXXX00</p>
-            </div>
-            <p>Copyright © 2025 Vikesh. All rights reserved.</p>
-            <p>Last Updated : <span id="last-updated-date">Loading...</span></p>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://x.com/Vikesh099?t=bijIcISPW_RZgl4d_G03CQ&s=09"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.github.com/vikesh09"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/vikesh-786432317"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-        </footer>
+      <div class="hero-scroll">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
     </div>
-</body>
-<script>
-    function updateDate() {
-        
-        let lastMod = new Date(document.lastModified);
-        
-        
-        let options = { day: '2-digit', month: 'short', year: 'numeric' };
-        let formattedDate = lastMod.toLocaleDateString('en-GB', options);
-        
-        
-        document.getElementById('last-updated-date').innerText = formattedDate;
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2 class="section-title">About Me</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-card reveal">
+        <p class="about-text">
+          I'm a <strong>CS student at Delhi Technological University (DTU)</strong> with a strong interest in
+          <strong>machine learning, competitive programming</strong>, and quantitative research. I enjoy solving
+          analytical problems and building efficient systems. My goal is to merge coding, mathematics, and
+          data-driven thinking to create innovative solutions in <strong>technology and quantitative finance</strong>.
+        </p>
+        <div class="about-stats">
+          <div class="stat">
+            <div class="stat-num">5+</div>
+            <div class="stat-label">Projects</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">Pupil</div>
+            <div class="stat-label">Codeforces</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">2025</div>
+            <div class="stat-label">DTU Batch</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Educational Journey</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <span class="year">2022</span>
+          <h3>Class 10th — RPVV Gandhi Nagar, Delhi</h3>
+          <p>Secured 91% · Developed strong interest in mathematics and computers.</p>
+        </div>
+
+        <div class="timeline-item reveal">
+          <span class="year">2024</span>
+          <h3>Class 12th — RPVV Gandhi Nagar, Delhi</h3>
+          <p>Completed PCM · Cleared JEE Mains 2024 with rank 60k.</p>
+        </div>
+
+        <div class="timeline-item current reveal">
+          <span class="year" style="color: rgba(154,61,226,0.7);">2025 — Present</span>
+          <h3 style="color: #00ffff;">B.Tech CSE — Delhi Technological University (DTU)</h3>
+          <p>Currently pursuing Computer Science, focusing on Machine Learning, Competitive Programming &amp; Quantitative Research.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Projects</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card reveal">
+          <span class="proj-icon">🎓</span>
+          <div class="proj-title">Student Academic Portal</div>
+          <div class="proj-desc">Centralized web app for attendance, timetables, and academic resources. Built for DTU campus use.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">HTML/CSS</span>
+            <span class="proj-tag">JavaScript</span>
+          </div>
+          <a href="https://github.com/vikesh09/Student-Academic-Portal" class="proj-link" target="_blank">GitHub →</a>
+        </div>
+
+        <div class="project-card reveal">
+          <span class="proj-icon">🐍</span>
+          <div class="proj-title">Python Encoding &amp; Imputation</div>
+          <div class="proj-desc">Ordinal encoding, one-hot encoding, and imputation from scratch using NumPy &amp; Pandas — no pre-defined sklearn functions.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Python</span>
+            <span class="proj-tag">NumPy</span>
+            <span class="proj-tag">Pandas</span>
+          </div>
+          <a href="https://github.com/vikesh09/Python-encoding-imputation" class="proj-link" target="_blank">GitHub →</a>
+        </div>
+
+        <div class="project-card reveal">
+          <span class="proj-icon">🌐</span>
+          <div class="proj-title">Personal Portfolio Website</div>
+          <div class="proj-desc">This site — responsive portfolio with animated UI showcasing projects, skills, and academic journey.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">HTML</span>
+            <span class="proj-tag">CSS</span>
+            <span class="proj-tag">JS</span>
+          </div>
+          <a href="https://github.com/vikesh09/Portfolio" class="proj-link" target="_blank">GitHub →</a>
+        </div>
+
+        <div class="project-card reveal">
+          <span class="proj-icon">📈</span>
+          <div class="proj-title">Stock Price Prediction</div>
+          <div class="proj-desc">ML models forecasting stock market trends using historical data, feature engineering, and predictive modeling.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Python</span>
+            <span class="proj-tag">ML</span>
+            <span class="proj-tag">Finance</span>
+          </div>
+          <a href="#" class="proj-link">Coming Soon</a>
+        </div>
+
+        <div class="project-card reveal">
+          <span class="proj-icon">🏆</span>
+          <div class="proj-title">Kaggle Competition Solutions</div>
+          <div class="proj-desc">Solutions to various Kaggle competitions focusing on data analysis, feature engineering, and model accuracy improvements.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Kaggle</span>
+            <span class="proj-tag">XGBoost</span>
+            <span class="proj-tag">EDA</span>
+          </div>
+          <a href="https://github.com/vikesh09/kaggle-competition-solution-Aims-" class="proj-link" target="_blank">GitHub →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="foot">
+      <div class="foot-logo">VIKESH</div>
+      <div class="contact">
+        <h3>Contact</h3>
+        <p>📍 AB Block, CSE Department, DTU, North West Delhi</p>
+        <p>✉️ <a href="mailto:Vikesh2506056@gmail.com">vikesh_cse_25a06056@dtu.ac.in</a></p>
+        <p>📞 +91 9113314039</p>
+      </div>
+      <div class="social-icons">
+        <a href="https://x.com/Vikesh099?t=bijIcISPW_RZgl4d_G03CQ&s=09" target="_blank" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.github.com/vikesh09" target="_blank" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/vikesh-786432317" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+      <p class="foot-copy">© 2026 Vikesh · All rights reserved</p>
+      <p class="foot-copy" style="margin-top:6px;">Last Updated: <span id="last-updated-date">Loading...</span></p>
+    </footer>
+
+  </div><!-- end .wrapper -->
+
+  <script>
+    /* ---- PARTICLE BACKGROUND ---- */
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+
+    function resize() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    class Particle {
+      constructor() { this.reset(true); }
+      reset(init) {
+        this.x = Math.random() * W;
+        this.y = init ? Math.random() * H : (Math.random() > 0.5 ? -5 : H + 5);
+        this.vx = (Math.random() - 0.5) * 0.28;
+        this.vy = (Math.random() - 0.5) * 0.28;
+        this.r = Math.random() * 1.4 + 0.4;
+        this.alpha = Math.random() * 0.35 + 0.08;
+        this.color = Math.random() > 0.65 ? '#9a3de2' : '#00ffff';
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < -10 || this.x > W + 10 || this.y < -10 || this.y > H + 10) this.reset(false);
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = this.alpha;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
     }
 
-    
-    window.onload = updateDate;
-</script>
+    for (let i = 0; i < 130; i++) particles.push(new Particle());
+
+    function drawConnections() {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 105) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = '#00ffff';
+            ctx.globalAlpha = (1 - dist / 105) * 0.07;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+          }
+        }
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => { p.update(); p.draw(); });
+      drawConnections();
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    /* ---- SCROLL REVEAL ---- */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* ---- SMOOTH SCROLL ---- */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    /* ---- LAST UPDATED DATE ---- */
+    window.addEventListener('load', () => {
+      const lastMod = new Date(document.lastModified);
+      const options = { day: '2-digit', month: 'short', year: 'numeric' };
+      document.getElementById('last-updated-date').innerText =
+        lastMod.toLocaleDateString('en-GB', options);
+    });
+  </script>
+
+</body>
 </html>

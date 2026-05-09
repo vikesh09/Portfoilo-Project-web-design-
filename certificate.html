@@ -1,79 +1,449 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificate</title>
-    <link rel="stylesheet" href="certificate.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">       
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
-    <link rel="icon" type="image/png" href="pfp.jpeg">
-    <link rel ="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"  >    
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificates | Vikesh</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/jpeg" href="pfp.jpeg">
+
+  <style>
+    /* ---- PAGE HERO ---- */
+    .page-hero {
+      min-height: 38vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 20px 60px;
+      position: relative;
+    }
+    .page-hero-tag {
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(0,255,255,0.5);
+      margin-bottom: 16px;
+      animation: fadeUp 0.9s ease both;
+    }
+    .page-hero-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: 4px;
+      text-shadow: 0 0 30px rgba(0,255,255,0.2);
+      animation: fadeUp 0.9s ease 0.15s both;
+    }
+    .page-hero-title span { color: #00ffff; text-shadow: 0 0 20px #00ffff; }
+    .page-hero-sub {
+      margin-top: 12px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      animation: fadeUp 0.9s ease 0.3s both;
+    }
+    .page-hero-line {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #00ffff, transparent);
+      margin: 20px auto 0;
+      animation: fadeUp 0.9s ease 0.4s both;
+    }
+
+    /* ---- FILTER TABS ---- */
+    .filter-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+      animation: fadeUp 0.9s ease 0.5s both;
+    }
+    .filter-btn {
+      padding: 8px 20px;
+      background: transparent;
+      border: 1px solid rgba(0,255,255,0.18);
+      color: rgba(255,255,255,0.45);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      border-color: #00ffff;
+      color: #00ffff;
+      background: rgba(0,255,255,0.07);
+      box-shadow: 0 0 14px rgba(0,255,255,0.18);
+    }
+
+    /* ---- CERT GRID ---- */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    /* ---- CERT CARD ---- */
+    .cert-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(0,255,255,0.09);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+    .cert-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, #9a3de2, #00ffff);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+      z-index: 2;
+    }
+    .cert-card:hover::before { transform: scaleX(1); }
+    .cert-card:hover {
+      border-color: rgba(0,255,255,0.28);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 20px rgba(0,255,255,0.06);
+    }
+
+    /* image wrapper */
+    .cert-img-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: #0a0f1e;
+    }
+    .cert-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease, filter 0.5s ease;
+      filter: brightness(0.85);
+      display: block;
+    }
+    .cert-card:hover .cert-img-wrap img {
+      transform: scale(1.04);
+      filter: brightness(1);
+    }
+    .cert-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(2,6,23,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+    .cert-card:hover .cert-overlay { opacity: 1; }
+    .cert-overlay a {
+      padding: 10px 26px;
+      border: 1px solid #00ffff;
+      color: #00ffff;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: rgba(2,6,23,0.7);
+      transition: all 0.3s;
+    }
+    .cert-overlay a:hover {
+      background: rgba(0,255,255,0.15);
+      box-shadow: 0 0 16px rgba(0,255,255,0.3);
+    }
+
+    /* card body */
+    .cert-body {
+      padding: 20px 22px 22px;
+    }
+    .cert-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      background: rgba(154,61,226,0.12);
+      border: 1px solid rgba(154,61,226,0.28);
+      font-size: 10px;
+      color: rgba(154,61,226,0.85);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .cert-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .cert-issuer {
+      font-size: 12px;
+      color: rgba(0,255,255,0.5);
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cert-issuer i { font-size: 13px; }
+
+    /* ---- STATS BAR ---- */
+    .cert-stats {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1px;
+      background: rgba(0,255,255,0.06);
+      margin-bottom: 50px;
+    }
+    .cert-stat {
+      text-align: center;
+      padding: 22px 10px;
+      background: #020617;
+    }
+    .cert-stat-num {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #00ffff;
+      text-shadow: 0 0 12px rgba(0,255,255,0.35);
+    }
+    .cert-stat-label {
+      font-size: 10px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+  </style>
 </head>
 <body>
-    <div class="main-container">
-        <div class="container">
-            <div class="header">
-                <nav class="nav">
-                        <img src="pfp2.png" alt="Logo" class="logo" >
-                        <div class="nav-links">
-                            <a href="index.html">Home</a>
-                            <a href="#about">About</a>
-                            <a href="#Projects">Projects</a>
-                            <a href="#Contact">Contact</a>
-                            <a href="#">Certificate</a>
-                            <button class="btn">
-                                <a href="https://www.linkedin.com/in/vikesh-786432317">Let's Connect</a>
 
-                            </button>
-                        </div>
-                        <img src="dtu-logo.png" alt="Logo" class="logo" >
-                </nav>
-            </div>
-            <div class="box1">
-                <div class="min-box1">
-                    <h1>Supervised Machine Learning</h1>
-                    <a href="course1.png" target="_blank"> <img src="course1.png" alt="Certificate"></a>
-                </div>
-                <div class="min-box2">
-                    <h1>Advanced Learning Algorithms</h1>
-                    <img src="course2.png" alt="Certificate" height="600" width="600">
-                </div>
-            </div>
-            <div class="box1">
-                <div class="min-box2">
-                    <h1>Intro In Machine Learning</h1>
-                    <img src="course2.png" alt="Certificate" height="600" width="600">
-                </div>
-                <div class="min-box2">
-                    <h1>Intermediate In Machine Learning</h1>
-                    <img src="course2.png" alt="Certificate" height="600" width="600">
-                </div>
-            </div>
-            
-        </div>
-        
-        <footer class="foot">
-            <div class="contact">
-                <h3>Contact</h3>
-                <p>📍Address: AB Block, Cse Department, DTU,North West Delhi</p>
-                
-                <p> Email: Vikesh2506056@gmail.com</p>
-                <p>Phone No: +91 9XXXXXXXX00</p>
-            </div>
-            <p>Copyright © 2025 Vikesh. All rights reserved.</p>
-            <p>Last Updated : 27 Jan 2026</p>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://x.com/Vikesh099?t=bijIcISPW_RZgl4d_G03CQ&s=09"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.github.com/vikesh09"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/vikesh-786432317"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-        </footer>
+  <canvas id="particles"></canvas>
+
+  <div class="wrapper">
+
+    <!-- NAVBAR (same as index) -->
+    <nav>
+      <a href="index.html" class="nav-logo">VKS</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#education">Education</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="certificate.html" style="color:#00ffff;">Certificates</a>
+        <a href="https://www.linkedin.com/in/vikesh-786432317" class="nav-btn" target="_blank">Let's Connect ↗</a>
+      </div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+      <p class="page-hero-tag">// Achievements &amp; Credentials</p>
+      <h1 class="page-hero-title">My <span>Certificates</span></h1>
+      <p class="page-hero-sub">Verified learning &amp; course completions</p>
+      <div class="page-hero-line"></div>
     </div>
-    
+
+    <!-- MAIN CONTENT -->
+    <section>
+
+      <!-- STATS -->
+      <div class="cert-stats reveal">
+        <div class="cert-stat">
+          <div class="cert-stat-num">4+</div>
+          <div class="cert-stat-label">Certificates</div>
+        </div>
+        <div class="cert-stat">
+          <div class="cert-stat-num">2</div>
+          <div class="cert-stat-label">Platforms</div>
+        </div>
+        <div class="cert-stat">
+          <div class="cert-stat-num">ML</div>
+          <div class="cert-stat-label">Focus Area</div>
+        </div>
+      </div>
+
+      <!-- FILTER -->
+      <div class="filter-row">
+        <button class="filter-btn active" onclick="filterCerts('all', this)">All</button>
+        <button class="filter-btn" onclick="filterCerts('coursera', this)">Coursera</button>
+        <button class="filter-btn" onclick="filterCerts('kaggle', this)">Kaggle</button>
+      </div>
+
+      <!-- CERT GRID -->
+      <div class="cert-grid" id="certGrid">
+
+        <div class="cert-card reveal" data-cat="coursera">
+          <div class="cert-img-wrap">
+            <img src="course1.png" alt="Supervised Machine Learning Certificate">
+            <div class="cert-overlay">
+              <a href="course1.png" target="_blank">View Full ↗</a>
+            </div>
+          </div>
+          <div class="cert-body">
+            <span class="cert-badge">Coursera</span>
+            <div class="cert-title">Supervised Machine Learning: Regression &amp; Classification</div>
+            <div class="cert-issuer"><i class="fas fa-graduation-cap"></i> DeepLearning.AI · Andrew Ng</div>
+          </div>
+        </div>
+
+        <div class="cert-card reveal" data-cat="coursera">
+          <div class="cert-img-wrap">
+            <img src="course2.png" alt="Advanced Learning Algorithms Certificate">
+            <div class="cert-overlay">
+              <a href="course2.png" target="_blank">View Full ↗</a>
+            </div>
+          </div>
+          <div class="cert-body">
+            <span class="cert-badge">Coursera</span>
+            <div class="cert-title">Advanced Learning Algorithms</div>
+            <div class="cert-issuer"><i class="fas fa-graduation-cap"></i> DeepLearning.AI · Andrew Ng</div>
+          </div>
+        </div>
+
+        <div class="cert-card reveal" data-cat="kaggle">
+          <div class="cert-img-wrap">
+            <img src="course2.png" alt="Intro to Machine Learning Certificate">
+            <div class="cert-overlay">
+              <a href="course2.png" target="_blank">View Full ↗</a>
+            </div>
+          </div>
+          <div class="cert-body">
+            <span class="cert-badge">Kaggle</span>
+            <div class="cert-title">Intro to Machine Learning</div>
+            <div class="cert-issuer"><i class="fas fa-medal"></i> Kaggle Learn</div>
+          </div>
+        </div>
+
+        <div class="cert-card reveal" data-cat="kaggle">
+          <div class="cert-img-wrap">
+            <img src="course2.png" alt="Intermediate Machine Learning Certificate">
+            <div class="cert-overlay">
+              <a href="course2.png" target="_blank">View Full ↗</a>
+            </div>
+          </div>
+          <div class="cert-body">
+            <span class="cert-badge">Kaggle</span>
+            <div class="cert-title">Intermediate Machine Learning</div>
+            <div class="cert-issuer"><i class="fas fa-medal"></i> Kaggle Learn</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER (same as index) -->
+    <footer class="foot">
+      <div class="foot-logo">VIKESH</div>
+      <div class="contact">
+        <h3>Contact</h3>
+        <p>📍 AB Block, CSE Department, DTU, North West Delhi</p>
+        <p>✉️ <a href="mailto:Vikesh2506056@gmail.com">Vikesh2506056@gmail.com</a></p>
+        <p>📞 +91 9XXXXXXXX00</p>
+      </div>
+      <div class="social-icons">
+        <a href="https://x.com/Vikesh099?t=bijIcISPW_RZgl4d_G03CQ&s=09" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.github.com/vikesh09" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/vikesh-786432317" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <p class="foot-copy">© 2025 Vikesh · All rights reserved</p>
+    </footer>
+
+  </div><!-- end .wrapper -->
+
+  <script>
+    /* ---- PARTICLES (same as index) ---- */
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+
+    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+
+    class Particle {
+      constructor() { this.reset(true); }
+      reset(init) {
+        this.x = Math.random() * W;
+        this.y = init ? Math.random() * H : (Math.random() > 0.5 ? -5 : H + 5);
+        this.vx = (Math.random() - 0.5) * 0.28;
+        this.vy = (Math.random() - 0.5) * 0.28;
+        this.r = Math.random() * 1.4 + 0.4;
+        this.alpha = Math.random() * 0.35 + 0.08;
+        this.color = Math.random() > 0.65 ? '#9a3de2' : '#00ffff';
+      }
+      update() {
+        this.x += this.vx; this.y += this.vy;
+        if (this.x < -10 || this.x > W + 10 || this.y < -10 || this.y > H + 10) this.reset(false);
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = this.alpha;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    for (let i = 0; i < 130; i++) particles.push(new Particle());
+
+    function drawConnections() {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 105) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = '#00ffff';
+            ctx.globalAlpha = (1 - dist / 105) * 0.07;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+          }
+        }
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => { p.update(); p.draw(); });
+      drawConnections();
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    /* ---- SCROLL REVEAL ---- */
+    const ro = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+    /* ---- FILTER ---- */
+    function filterCerts(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.cert-card').forEach(card => {
+        const match = cat === 'all' || card.dataset.cat === cat;
+        card.style.display = match ? '' : 'none';
+      });
+    }
+  </script>
+
 </body>
 </html>
