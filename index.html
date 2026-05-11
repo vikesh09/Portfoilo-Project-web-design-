@@ -26,6 +26,7 @@
         <a href="#about">About</a>
         <a href="#education">Education</a>
         <a href="#projects">Projects</a>
+        <a href="#cp-stats">CP Stats</a>
         <a href="certificate.html">Certificates</a>
         <a href="https://www.linkedin.com/in/vikesh-786432317" class="nav-btn" target="_blank">Let's Connect ↗</a>
       </div>
@@ -44,7 +45,7 @@
       </div>
 
       <!-- TEXT BELOW PHOTO -->
-      <p class="hero-tag">Machine Learning Engineer</p>
+      <p class="hero-tag">// Computer Science Engineer</p>
       <h1 class="hero-name"><span data-text="VIKESH">VIKESH</span></h1>
       <p class="hero-sub">B.Tech in Computer Science</p>
       <p class="hero-uni">Delhi Technological University · New Delhi</p>
@@ -90,10 +91,105 @@
       </div>
     </section>
 
+    <!-- CP STATS -->
+    <section id="cp-stats">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Competitive Programming</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="cp-grid">
+
+        <!-- CODEFORCES CARD -->
+        <div class="cp-card reveal" id="cf-card">
+          <div class="cp-card-header">
+            <div class="cp-logo cf-logo">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <rect x="1" y="12" width="5" height="11" rx="1" fill="#1a9cd8"/>
+                <rect x="9.5" y="6" width="5" height="17" rx="1" fill="#e84d3d"/>
+                <rect x="18" y="1" width="5" height="22" rx="1" fill="#1a9cd8"/>
+              </svg>
+              <span>Codeforces</span>
+            </div>
+            <a href="https://codeforces.com/profile/vikeshX" target="_blank" class="cp-profile-link">@vikeshX ↗</a>
+          </div>
+
+          <div class="cp-rating-row">
+            <div class="cp-rating-num" id="cf-rating">—</div>
+            <div class="cp-rank-badge" id="cf-rank">Loading...</div>
+          </div>
+
+          <div class="cp-stats-row cf-stats-row">
+            <div class="cp-mini-stat">
+              <div class="cp-mini-val" id="cf-total">—</div>
+              <div class="cp-mini-label">Total Tried</div>
+            </div>
+            <div class="cp-mini-stat">
+              <div class="cp-mini-val" id="cf-solved">—</div>
+              <div class="cp-mini-label">AC Solved</div>
+            </div>
+            <div class="cp-mini-stat">
+              <div class="cp-mini-val" id="cf-contests">—</div>
+              <div class="cp-mini-label">Contests</div>
+            </div>
+            <div class="cp-mini-stat">
+              <div class="cp-mini-val" id="cf-maxrating">—</div>
+              <div class="cp-mini-label">Max Rating</div>
+            </div>
+          </div>
+
+          <div class="cp-recent-label">Recent Submissions</div>
+          <div class="cp-recent-list" id="cf-recent">
+            <div class="cp-loading">Fetching data...</div>
+          </div>
+        </div>
+
+        <!-- LEETCODE CARD -->
+        <div class="cp-card reveal" id="lc-card">
+          <div class="cp-card-header">
+            <div class="cp-logo lc-logo">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path d="M13.5 3L7 12.5L10 14L8 21L17 10H13L16 3H13.5Z" fill="#ffa116"/>
+              </svg>
+              <span>LeetCode</span>
+            </div>
+            <a href="https://leetcode.com/u/vikeshX/" target="_blank" class="cp-profile-link">@vikeshX ↗</a>
+          </div>
+
+          <div class="cp-rating-row">
+            <div class="cp-rating-num" id="lc-solved">—</div>
+            <div class="cp-rank-badge lc-badge" id="lc-rank">Loading...</div>
+          </div>
+
+          <div class="cp-stats-row">
+            <div class="cp-mini-stat">
+              <div class="cp-mini-val easy" id="lc-easy">—</div>
+              <div class="cp-mini-label">Easy</div>
+            </div>
+            <div class="cp-mini-stat">
+              <div class="cp-mini-val medium" id="lc-medium">—</div>
+              <div class="cp-mini-label">Medium</div>
+            </div>
+            <div class="cp-mini-stat">
+              <div class="cp-mini-val hard" id="lc-hard">—</div>
+              <div class="cp-mini-label">Hard</div>
+            </div>
+          </div>
+
+          <div class="cp-recent-label">Recent Submissions</div>
+          <div class="cp-recent-list" id="lc-recent">
+            <div class="cp-loading">Fetching data...</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- EDUCATION -->
     <section id="education">
       <div class="section-header">
-        <span class="section-num">02</span>
+        <span class="section-num">03</span>
         <h2 class="section-title">Educational Journey</h2>
         <div class="section-line"></div>
       </div>
@@ -123,7 +219,7 @@
     <!-- PROJECTS -->
     <section id="projects">
       <div class="section-header">
-        <span class="section-num">03</span>
+        <span class="section-num">04</span>
         <h2 class="section-title">Projects</h2>
         <div class="section-line"></div>
       </div>
@@ -191,7 +287,7 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
+<!-- FOOTER -->
     <footer class="foot">
       <div class="foot-logo">VIKESH</div>
       <div class="contact">
@@ -309,7 +405,175 @@
       });
     });
 
-    /* ---- LAST UPDATED DATE ---- */
+
+  /* ---- CODEFORCES API ---- */
+  async function loadCF() {
+    const handle = 'vikeshX';
+    try {
+      // User info
+      const userRes = await fetch(`https://codeforces.com/api/user.info?handles=${handle}`);
+      const userData = await userRes.json();
+      if (userData.status === 'OK') {
+        const u = userData.result[0];
+        document.getElementById('cf-rating').textContent = u.rating || '—';
+        document.getElementById('cf-maxrating').textContent = u.maxRating || '—';
+        const rankEl = document.getElementById('cf-rank');
+        rankEl.textContent = u.rank ? u.rank.charAt(0).toUpperCase() + u.rank.slice(1) : '—';
+        // color by rank
+        const rankColors = {
+          'newbie': '#808080', 'pupil': '#008000', 'specialist': '#03a89e',
+          'expert': '#0000ff', 'candidate master': '#aa00aa', 'master': '#ff8c00',
+          'international master': '#ff8c00', 'grandmaster': '#ff0000',
+          'international grandmaster': '#ff0000', 'legendary grandmaster': '#ff0000'
+        };
+        rankEl.style.borderColor = rankColors[u.rank] || '#00ffff';
+        rankEl.style.color = rankColors[u.rank] || '#00ffff';
+      }
+
+      // Submissions for solved count + recent
+      const subRes = await fetch(`https://codeforces.com/api/user.status?handle=${handle}&from=1&count=100`);
+      const subData = await subRes.json();
+      if (subData.status === 'OK') {
+        const subs = subData.result;
+        const solvedSet = new Set(
+          subs.filter(s => s.verdict === 'OK').map(s => s.problem.contestId + s.problem.index)
+        );
+        const totalSet = new Set(
+          subs.map(s => s.problem.contestId + s.problem.index)
+        );
+        document.getElementById('cf-solved').textContent = solvedSet.size;
+        document.getElementById('cf-total').textContent  = totalSet.size;
+
+        // Recent 5 unique
+        const seen = new Set();
+        const recent = [];
+        for (const s of subs) {
+          const key = s.problem.contestId + s.problem.index;
+          if (!seen.has(key)) {
+            seen.add(key);
+            recent.push(s);
+            if (recent.length === 5) break;
+          }
+        }
+        const container = document.getElementById('cf-recent');
+        container.innerHTML = recent.map(s => {
+          const ok = s.verdict === 'OK';
+          const diff = s.problem.rating ? `<span class="prob-diff">${s.problem.rating}</span>` : '';
+          return `<div class="cp-sub-item ${ok ? 'ac' : 'wa'}">
+            <span class="sub-verdict">${ok ? '✓' : '✗'}</span>
+            <span class="sub-name">${s.problem.name}</span>
+            ${diff}
+          </div>`;
+        }).join('');
+      }
+
+      // Contest count
+      const contRes = await fetch(`https://codeforces.com/api/user.rating?handle=${handle}`);
+      const contData = await contRes.json();
+      if (contData.status === 'OK') {
+        document.getElementById('cf-contests').textContent = contData.result.length;
+      }
+    } catch(e) {
+      document.getElementById('cf-recent').innerHTML = '<div class="cp-loading" style="color:rgba(255,100,100,0.6)">Could not load — check connection</div>';
+    }
+  }
+
+  /* ---- LEETCODE via GraphQL (official, CORS-safe with no-cors fallback) ---- */
+  async function loadLC() {
+    const username = 'vikeshX';
+
+    // Method 1: unofficial but reliable proxy
+    const apis = [
+      `https://leetcode-stats-api.herokuapp.com/${username}`,
+      `https://leetcode-api-faisalshohag.vercel.app/${username}`,
+      `https://lc-stats.vercel.app/api/user?username=${username}`
+    ];
+
+    let loaded = false;
+
+    for (const url of apis) {
+      try {
+        const res = await fetch(url, { signal: AbortSignal.timeout(5000) });
+        if (!res.ok) continue;
+        const data = await res.json();
+
+        // different APIs return different shapes — handle both
+        const total = data.totalSolved ?? data.totalQuestions ?? data.solvedProblem ?? null;
+        const easy  = data.easySolved  ?? data.totalEasy  ?? data.easySolved  ?? null;
+        const med   = data.mediumSolved ?? data.totalMedium ?? null;
+        const hard  = data.hardSolved  ?? data.totalHard  ?? null;
+        const rank  = data.ranking     ?? data.rank       ?? null;
+        const acc   = data.acceptanceRate ?? null;
+
+        if (total !== null) {
+          document.getElementById('lc-solved').textContent  = total;
+          document.getElementById('lc-easy').textContent    = easy   ?? '—';
+          document.getElementById('lc-medium').textContent  = med    ?? '—';
+          document.getElementById('lc-hard').textContent    = hard   ?? '—';
+          const rankEl = document.getElementById('lc-rank');
+          if (acc)  rankEl.textContent = Math.round(acc) + '% acc';
+          else if (rank) rankEl.textContent = '#' + rank.toLocaleString();
+          else rankEl.textContent = 'Active';
+          loaded = true;
+          break;
+        }
+      } catch(e) { /* try next */ }
+    }
+
+    if (!loaded) {
+      // Fallback: show LeetCode stats card as embedded SVG image — always works
+      document.getElementById('lc-card').innerHTML = `
+        <div class="cp-card-header">
+          <div class="cp-logo lc-logo">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M13.5 3L7 12.5L10 14L8 21L17 10H13L16 3H13.5Z" fill="#ffa116"/>
+            </svg>
+            <span>LeetCode</span>
+          </div>
+          <a href="https://leetcode.com/u/${username}/" target="_blank" class="cp-profile-link">@${username} ↗</a>
+        </div>
+        <div class="lc-card-img-wrap">
+          <img
+            src="https://leetcard.jacoblin.cool/${username}?theme=dark&font=source_code_pro&ext=contest&border=0&radius=0"
+            alt="LeetCode Stats"
+            class="lc-stats-card"
+            onerror="this.parentElement.innerHTML='<div class=\'cp-loading\'>Visit <a href=\'https://leetcode.com/u/${username}/\' target=\'_blank\' style=\'color:#ffa116\'>leetcode.com/u/${username}</a> to view stats</div>'"
+          />
+        </div>
+      `;
+    } else {
+      // Load recent submissions
+      try {
+        const recentRes = await fetch(`https://alfa-leetcode-api.onrender.com/${username}/submission?limit=5`, { signal: AbortSignal.timeout(5000) });
+        const recentData = await recentRes.json();
+        const subs = recentData.submission || [];
+        const container = document.getElementById('lc-recent');
+        if (subs.length) {
+          container.innerHTML = subs.map(s => {
+            const ok = s.statusDisplay === 'Accepted';
+            return `<div class="cp-sub-item ${ok ? 'ac' : 'wa'}">
+              <span class="sub-verdict">${ok ? '✓' : '✗'}</span>
+              <span class="sub-name">${s.title}</span>
+              <span class="prob-diff lc-diff">${s.lang}</span>
+            </div>`;
+          }).join('');
+        } else {
+          document.getElementById('lc-recent').innerHTML = `<div class="cp-loading">
+            <a href="https://leetcode.com/u/${username}/" target="_blank" style="color:#ffa116;text-decoration:none;letter-spacing:1px;font-size:11px;">View full profile on LeetCode ↗</a>
+          </div>`;
+        }
+      } catch(e) {
+        document.getElementById('lc-recent').innerHTML = `<div class="cp-loading">
+          <a href="https://leetcode.com/u/${username}/" target="_blank" style="color:#ffa116;text-decoration:none;letter-spacing:1px;font-size:11px;">View full profile on LeetCode ↗</a>
+        </div>`;
+      }
+    }
+  }
+
+  loadCF();
+  loadLC();
+
+      /* ---- LAST UPDATED DATE ---- */
     window.addEventListener('load', () => {
       const lastMod = new Date(document.lastModified);
       const options = { day: '2-digit', month: 'short', year: 'numeric' };
